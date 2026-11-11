@@ -1,0 +1,9 @@
+.vscode/**
+.github/**
+docs/**
+.gitignore
+.gitattributes
+.vscodeignore
+**/*.map
+**/*.ts
+src/relay-debug.log

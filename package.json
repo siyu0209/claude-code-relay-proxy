@@ -1,0 +1,95 @@
+{
+  "name": "claude-code-relay",
+  "publisher": "zhoutao",
+  "displayName": "Claude Code Relay Proxy",
+  "description": "自动协议转换代理，让 Claude Code 支持 OpenAI 格式中转站，只在 VS Code 生效",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "zhoutao"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siyu0209/claude-code-relay-proxy.git"
+  },
+  "homepage": "https://github.com/siyu0209/claude-code-relay-proxy#readme",
+  "bugs": {
+    "url": "https://github.com/siyu0209/claude-code-relay-proxy/issues"
+  },
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#0e1422",
+    "theme": "dark"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "anthropic",
+    "openai",
+    "proxy",
+    "relay",
+    "protocol-converter",
+    "llm",
+    "api-gateway"
+  ],
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeCodeRelay.toggle",
+        "title": "Claude Code Relay: 开关代理"
+      },
+      {
+        "command": "claudeCodeRelay.config",
+        "title": "Claude Code Relay: 配置中转站"
+      },
+      {
+        "command": "claudeCodeRelay.detect",
+        "title": "Claude Code Relay: 重新检测协议"
+      },
+      {
+        "command": "claudeCodeRelay.status",
+        "title": "Claude Code Relay: 查看状态"
+      }
+    ],
+    "configuration": {
+      "title": "Claude Code Relay",
+      "properties": {
+        "claudeCodeRelay.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否启用协议转换代理"
+        },
+        "claudeCodeRelay.targetBaseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "目标中转站地址（留空则自动从 ~/.claude/settings.json 读取）"
+        },
+        "claudeCodeRelay.targetApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "目标中转站 API Key（留空则自动从 ~/.claude/settings.json 读取）"
+        },
+        "claudeCodeRelay.port": {
+          "type": "number",
+          "default": 0,
+          "description": "本地代理端口（0=自动分配）"
+        },
+        "claudeCodeRelay.modelMapping": {
+          "type": "object",
+          "default": {},
+          "description": "模型名映射，例如 {\"claude-opus-5-5\": \"x-deepseek-v4.1-flash\"}（留空自动匹配）"
+        }
+      }
+    }
+  }
+}
