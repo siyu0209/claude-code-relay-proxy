@@ -4,9 +4,6 @@ npm-debug.log*
 yarn-error.log*
 package-lock.json
 
-# 打包产物
-*.vsix
-
 # 运行期日志（含请求内容，绝不入库）
 src/relay-debug.log
 relay-debug.log
